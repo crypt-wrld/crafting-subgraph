@@ -1,0 +1,240 @@
+[
+  {
+    "inputs": [
+      { "internalType": "address", "name": "_gameItems", "type": "address" }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "recipeId",
+        "type": "uint256"
+      }
+    ],
+    "name": "OnCraft",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256[]",
+        "name": "ingredients",
+        "type": "uint256[]"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256[]",
+        "name": "ingredientQuantities",
+        "type": "uint256[]"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256[]",
+        "name": "products",
+        "type": "uint256[]"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256[]",
+        "name": "productQuantities",
+        "type": "uint256[]"
+      }
+    ],
+    "name": "OnRecipeAdd",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      }
+    ],
+    "name": "OnRecipeDelete",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          { "internalType": "uint256", "name": "id", "type": "uint256" },
+          {
+            "components": [
+              {
+                "internalType": "uint256[]",
+                "name": "ingredients",
+                "type": "uint256[]"
+              },
+              {
+                "internalType": "uint256[]",
+                "name": "quantities",
+                "type": "uint256[]"
+              }
+            ],
+            "internalType": "struct Crafting.RecipeComponents",
+            "name": "components",
+            "type": "tuple"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint256[]",
+                "name": "products",
+                "type": "uint256[]"
+              },
+              {
+                "internalType": "uint256[]",
+                "name": "quantities",
+                "type": "uint256[]"
+              }
+            ],
+            "internalType": "struct Crafting.RecipeOutputs",
+            "name": "outputs",
+            "type": "tuple"
+          }
+        ],
+        "internalType": "struct Crafting.Recipe",
+        "name": "recipe",
+        "type": "tuple"
+      }
+    ],
+    "name": "addRecipe",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "recipeId", "type": "uint256" }
+    ],
+    "name": "craft",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "recipeId", "type": "uint256" }
+    ],
+    "name": "deleteRecipe",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "name": "recipies",
+    "outputs": [
+      { "internalType": "uint256", "name": "id", "type": "uint256" },
+      {
+        "components": [
+          {
+            "internalType": "uint256[]",
+            "name": "ingredients",
+            "type": "uint256[]"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "quantities",
+            "type": "uint256[]"
+          }
+        ],
+        "internalType": "struct Crafting.RecipeComponents",
+        "name": "components",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256[]",
+            "name": "products",
+            "type": "uint256[]"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "quantities",
+            "type": "uint256[]"
+          }
+        ],
+        "internalType": "struct Crafting.RecipeOutputs",
+        "name": "outputs",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "_gameItems", "type": "address" }
+    ],
+    "name": "setGameItems",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "newOwner", "type": "address" }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

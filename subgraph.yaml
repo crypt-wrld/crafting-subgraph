@@ -1,0 +1,32 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Crafting
+    network: bsc
+    source:
+      address: "0x65C5d816CAF64233A12978dFa70f6d12F69Ca1f8"
+      abi: Crafting
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - OnCraft
+        - OnRecipeAdd
+        - OnRecipeDelete
+        - OwnershipTransferred
+      abis:
+        - name: Crafting
+          file: ./abis/Crafting.json
+      eventHandlers:
+        - event: OnCraft(address,uint256)
+          handler: handleOnCraft
+        - event: OnRecipeAdd(uint256,uint256[],uint256[],uint256[],uint256[])
+          handler: handleOnRecipeAdd
+        - event: OnRecipeDelete(uint256)
+          handler: handleOnRecipeDelete
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: ./src/mapping.ts
