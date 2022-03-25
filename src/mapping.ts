@@ -6,53 +6,34 @@ import {
   OnRecipeDelete,
   OwnershipTransferred
 } from "../generated/Crafting/Crafting"
-import { ExampleEntity } from "../generated/schema"
+import { Recipe, Craft } from "../generated/schema"
 
 export function handleOnCraft(event: OnCraft): void {
-  // Entities can be loaded from the store using a string ID; this ID
-  // needs to be unique across all entities of the same type
-  let entity = ExampleEntity.load(event.transaction.from.toHex())
-
-  // Entities only exist after they have been saved to the store;
-  // `null` checks allow to create entities on demand
-  if (!entity) {
-    entity = new ExampleEntity(event.transaction.from.toHex())
-
-    // Entity fields can be set using simple assignments
-    entity.count = BigInt.fromI32(0)
+  var craft = Craft.load(event.transaction.from.toHex())
+  if (!craft) {
+    craft = new Craft(event.transaction.from.toHex())
+    craft.count = BigInt.fromI32(0)
   }
-
-  // BigInt and BigDecimal math are supported
-  entity.count = entity.count + BigInt.fromI32(1)
-
-  // Entity fields can be set based on event parameters
-  entity.user = event.params.user
-  entity.recipeId = event.params.recipeId
-
-  // Entities can be written to the store with `.save()`
-  entity.save()
-
-  // Note: If a handler doesn't require existing field values, it is faster
-  // _not_ to load the entity from the store. Instead, create it fresh with
-  // `new Entity(...)`, set the fields that should be updated and save the
-  // entity back to the store. Fields that were not set or unset remain
-  // unchanged, allowing for partial updates to be applied.
-
-  // It is also possible to access smart contracts from mappings. For
-  // example, the contract that has emitted the event can be connected to
-  // with:
-  //
-  // let contract = Contract.bind(event.address)
-  //
-  // The following functions can then be called on this contract to access
-  // state variables and other data:
-  //
-  // - contract.owner(...)
-  // - contract.recipies(...)
+  craft.count = craft.count.plus(BigInt.fromI32(1));
+  craft.user = event.params.user;
+  craft.recipe = event.params.recipeId.toHex();
+  craft.save()
 }
 
-export function handleOnRecipeAdd(event: OnRecipeAdd): void {}
+export function handleOnRecipeAdd(event: OnRecipeAdd): void {
+  var recipe = new Recipe(event.params.id.toHex());
+  recipe.ingredients = event.params.ingredients;
+  recipe.ingredientQuantities = event.params.ingredientQuantities;
+  recipe.products = event.params.products;
+  recipe.productQuantities = event.params.productQuantities;
+  recipe.save();
+}
 
-export function handleOnRecipeDelete(event: OnRecipeDelete): void {}
+export function handleOnRecipeDelete(event: OnRecipeDelete): void {
+  var recipe = Recipe.load(event.params.id.toHex()) as Recipe;
+  if (!recipe) return;
+  recipe.disabled = false;
+  recipe.save();
+}
 
 export function handleOwnershipTransferred(event: OwnershipTransferred): void {}
