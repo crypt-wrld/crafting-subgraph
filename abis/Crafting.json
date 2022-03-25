@@ -1,7 +1,11 @@
 [
   {
     "inputs": [
-      { "internalType": "address", "name": "_gameItems", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "_gameItems",
+        "type": "address"
+      }
     ],
     "stateMutability": "nonpayable",
     "type": "constructor"
@@ -98,40 +102,25 @@
     "inputs": [
       {
         "components": [
-          { "internalType": "uint256", "name": "id", "type": "uint256" },
           {
-            "components": [
-              {
-                "internalType": "uint256[]",
-                "name": "ingredients",
-                "type": "uint256[]"
-              },
-              {
-                "internalType": "uint256[]",
-                "name": "quantities",
-                "type": "uint256[]"
-              }
-            ],
-            "internalType": "struct Crafting.RecipeComponents",
-            "name": "components",
-            "type": "tuple"
+            "internalType": "uint256[]",
+            "name": "ingredients",
+            "type": "uint256[]"
           },
           {
-            "components": [
-              {
-                "internalType": "uint256[]",
-                "name": "products",
-                "type": "uint256[]"
-              },
-              {
-                "internalType": "uint256[]",
-                "name": "quantities",
-                "type": "uint256[]"
-              }
-            ],
-            "internalType": "struct Crafting.RecipeOutputs",
-            "name": "outputs",
-            "type": "tuple"
+            "internalType": "uint256[]",
+            "name": "ingredientQuantities",
+            "type": "uint256[]"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "products",
+            "type": "uint256[]"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "productQuantities",
+            "type": "uint256[]"
           }
         ],
         "internalType": "struct Crafting.Recipe",
@@ -146,7 +135,11 @@
   },
   {
     "inputs": [
-      { "internalType": "uint256", "name": "recipeId", "type": "uint256" }
+      {
+        "internalType": "uint256",
+        "name": "recipeId",
+        "type": "uint256"
+      }
     ],
     "name": "craft",
     "outputs": [],
@@ -155,7 +148,11 @@
   },
   {
     "inputs": [
-      { "internalType": "uint256", "name": "recipeId", "type": "uint256" }
+      {
+        "internalType": "uint256",
+        "name": "recipeId",
+        "type": "uint256"
+      }
     ],
     "name": "deleteRecipe",
     "outputs": [],
@@ -163,17 +160,15 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "owner",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "name": "recipies",
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "recipeId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getRecipe",
     "outputs": [
-      { "internalType": "uint256", "name": "id", "type": "uint256" },
       {
         "components": [
           {
@@ -183,16 +178,9 @@
           },
           {
             "internalType": "uint256[]",
-            "name": "quantities",
+            "name": "ingredientQuantities",
             "type": "uint256[]"
-          }
-        ],
-        "internalType": "struct Crafting.RecipeComponents",
-        "name": "components",
-        "type": "tuple"
-      },
-      {
-        "components": [
+          },
           {
             "internalType": "uint256[]",
             "name": "products",
@@ -200,13 +188,26 @@
           },
           {
             "internalType": "uint256[]",
-            "name": "quantities",
+            "name": "productQuantities",
             "type": "uint256[]"
           }
         ],
-        "internalType": "struct Crafting.RecipeOutputs",
-        "name": "outputs",
+        "internalType": "struct Crafting.Recipe",
+        "name": "",
         "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
       }
     ],
     "stateMutability": "view",
@@ -221,7 +222,11 @@
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "_gameItems", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "_gameItems",
+        "type": "address"
+      }
     ],
     "name": "setGameItems",
     "outputs": [],
@@ -230,7 +235,11 @@
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "newOwner", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
     ],
     "name": "transferOwnership",
     "outputs": [],
