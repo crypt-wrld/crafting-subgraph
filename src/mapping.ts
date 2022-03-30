@@ -1,6 +1,5 @@
 import { BigInt } from "@graphprotocol/graph-ts"
 import {
-  Crafting,
   OnCraft,
   OnRecipeAdd,
   OnRecipeDelete,

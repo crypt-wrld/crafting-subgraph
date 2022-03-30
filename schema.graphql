@@ -7,7 +7,6 @@ type Craft @entity {
 
 type Recipe @entity {
   id: ID!
-  count: BigInt!
   ingredients: [BigInt!]!
   ingredientQuantities: [BigInt!]!
   products: [BigInt!]!
