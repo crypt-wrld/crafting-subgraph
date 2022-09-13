@@ -25,14 +25,15 @@ export function handleOnRecipeAdd(event: OnRecipeAdd): void {
   recipe.ingredientQuantities = event.params.ingredientQuantities;
   recipe.products = event.params.products;
   recipe.productQuantities = event.params.productQuantities;
+  recipe.disabled = false;
   recipe.save();
 }
 
 export function handleOnRecipeDelete(event: OnRecipeDelete): void {
   var recipe = Recipe.load(event.params.id.toHex()) as Recipe;
   if (!recipe) return;
-  recipe.disabled = false;
+  recipe.disabled = true;
   recipe.save();
 }
 
-export function handleOwnershipTransferred(event: OwnershipTransferred): void {}
+export function handleOwnershipTransferred(event: OwnershipTransferred): void { }
