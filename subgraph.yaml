@@ -6,9 +6,9 @@ dataSources:
     name: Crafting
     network: bsc
     source:
-      address: "0xA3e253a6C79b4850533530e5548c63f9A5FaBb84"
+      address: "0xDe0c4cd4cdf3598C804da1B3b389535C75FDB61E"
       abi: Crafting
-      startBlock: 16364967
+      startBlock: 22171025
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
